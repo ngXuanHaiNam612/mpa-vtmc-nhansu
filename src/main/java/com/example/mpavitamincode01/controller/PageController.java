@@ -32,8 +32,17 @@ public class PageController {
         return "page/pages/billing";
     };
 
-    @GetMapping("virtual-reality")
+    @GetMapping("/virtual-reality")
     public String doGetVisualRealityView(){
         return "page/pages/virtual-reality";
+    };
+
+    @GetMapping("/nhan-vien-form")
+    public String doGetNhanVienForm(Model model){
+        return "page/pages/nhan-vien-form";
+    };
+    @GetMapping("/phong-ban-form")
+    public String doGetPhongBanForm(Model model){
+        return "page/pages/phong-ban-form";
     };
 }

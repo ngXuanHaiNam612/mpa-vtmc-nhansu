@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{./page/index :: dynamic(~{::main})}">
+
+<head>
+
+</head>
+
+<body>
+<div th:fragment="main">
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function (){-->
+<!--            getAllUser();-->
+<!--        })-->
+<!--    </script>-->
+    <script type="text/javascript" th:src="@{/page/pages/js/form.js}"></script>
+    <!-- partial -->
+    <div class="col-12">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <span class="form-label font-weight-bold">Nhân viên</span>
+                </div>
+                <div class="mb-3">
+                    <label for="txtFullName" class="form-label">Họ tên</label>
+                    <input class="form-control bg-body" id="txtFullName" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="txtAge" class="form-label">Tuổi</label>
+                    <input class="form-control bg-body" id="txtAge" type="number">
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="txtHometown" class="form-label">Quê quán</label>
+                            <input class="form-control bg-body" id="txtHometown" type="text">
+                        </div>
+                        <div class="col-4">
+                            <label for="cbxPhongBan" class="form-label">Phòng Ban</label>
+                            <div id="cbxPhongBan">
+                                <select id="cbxPhongBanSelect" class="form-select bg-body" aria-label="Default select example">
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="btnAddUser" class="btn btn-primary" type="button" onclick="addUser()">Thêm nhân viên</button>
+            </div>
+            <div class="col-lg-6">
+                <div class="mb-3">
+                    <span class="form-label font-weight-bold">Phòng ban</span>
+                </div>
+                <div class="mb-3">
+                    <label for="txtMaPhongBan" class="form-label">Mã phòng ban</label>
+                    <input class="form-control bg-body" id="txtMaPhongBan" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="txtTenPhongBan" class="form-label">Tên phòng ban</label>
+                    <input class="form-control bg-body" id="txtTenPhongBan" type="text">
+                </div>
+                <div class="mb-3">
+                    <label for="txtMaTP" class="form-label">Mã trưởng phòng</label>
+                    <input class="form-control bg-body" id="txtMaTP" type="number">
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-8">
+                            <label class="form-label"></label>
+                            <input class="form-control bg-body">
+                        </div>
+                        <div class="col-4">
+                            <label class="form-label"></label>
+                            <div >
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="btnAddPhongBan" class="btn btn-primary" type="button" onclick="addPhongBan()">Thêm phòng ban</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <table class="table table-light table-striped-columns" id="tableUser">
+                    <thead>
+                    <tr>
+                        <th>Mã nhân viên</th>
+                        <th>Họ Tên</th>
+                        <th>Tuổi</th>
+                        <th>Quê quán</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodyTableUser">
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <div class="col-lg-6">
+                <table class="table table-light table-striped-columns" id="tablePhongBan">
+                    <thead>
+                    <tr>
+                        <th>Mã phòng</th>
+                        <th>Tên phòng ban</th>
+                        <th>Mã trưởng phòng</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tbodyTablePhongBan">
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

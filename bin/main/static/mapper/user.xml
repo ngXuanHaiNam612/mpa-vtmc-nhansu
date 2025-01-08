@@ -32,19 +32,8 @@
     </select>
 
     <insert id="insert">
-        INSERT INTO VTMC_NHANSU_NHANVIEN(
-             ma_nhan_vien
-             , ten_nhan_vien
-             , tuoi, que_quan
-             , ma_phong_ban
-        )VALUES(
-            #{tenNhanVien}
-            , #{tuoi}
-            , #{queQuan}
-            , #{maPhongBan}
-       )
-    </insert>
 
+    </insert>
 
     <update id="update">
 

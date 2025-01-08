@@ -5,7 +5,7 @@
     <resultMap type="com.example.mpavitamincode01.entity.PhongBan" id="phongBanResultMap">
         <result column="ma_phong_ban" property="maPhongBan"/>
         <result column="ten_phong_ban" property="tenPhongBan"/>
-        <result column="ma_truong_phong" property="maTruongPhong"/>
+        <result column="ma_truong_phong" property="maTP"/>
     </resultMap>
 
     <sql id="columnPhongBan">
@@ -35,7 +35,7 @@
         ) VALUES (
              #{maPhongBan}
              ,#{tenPhongBan}
-             , #{maTruongPhong}
+             , #{maTP}
      )
     </insert>
 
