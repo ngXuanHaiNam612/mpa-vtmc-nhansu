@@ -4,15 +4,7 @@
 <head>
 
 </head>
-<style>
-    .title-for-table{
-        color: peru;
-        font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-        font-size: 24px;
-        font-weight: bold;
-    }
 
-</style>
 <body>
 <div th:fragment="main">
 <!--    <script type="text/javascript">-->
@@ -25,8 +17,10 @@
     <div class="col-12">
             <div class="row">
             <div class="col-lg-6">
-                <div class="mb-3">
-                    <span class="title-for-table">Nhân viên</span>
+                <div class="mb-3" >
+                    <span class="" style="color: peru; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 24px; font-weight: bold">Nhân viên</span>
+                    <a th:href="@{/page/nhan-vien-form}" class="btn btn-success btn-sm" style="height: 30px; line-height: 1; margin-bottom: 10px;">+</a>
+
                 </div>
                 <table class="table table-light table-striped-columns" id="tableUser">
                     <thead>
@@ -45,8 +39,9 @@
             </div>
 
             <div class="col-lg-6">
-                <div class="mb-3">
-                    <span class="title-for-table">Phòng ban</span>
+                <div class="mb-3" >
+                    <span class="" style="color: peru; font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif; font-size: 24px; font-weight: bold">Phòng ban</span>
+                    <a th:href="@{/page/phong-ban-form}" class="btn btn-success btn-sm" style="height: 30px; line-height: 1; margin-bottom: 10px;">+</a>
                 </div>
                 <table class="table table-light table-striped-columns" id="tablePhongBan">
                     <thead>
