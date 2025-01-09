@@ -40,7 +40,10 @@
     </insert>
 
     <update id="update">
-
+        UPDATE VTMC_NHANSU_PHONGBAN
+        SET ten_phong_ban = #{tenPhongBan}
+          , ma_truong_phong = #{maTP}
+        WHERE ma_phong_ban = ?
     </update>
 
     <delete id="delete">

@@ -20,11 +20,43 @@ public class PhongBanServiceImpl implements PhongBanService {
     }
 
     @Override
-    public void savePhongBan(PhongBan newPhongBan) {
-        try {
-            phongBanMapper.insert(newPhongBan);
-        } catch (Exception e){
-            e.printStackTrace();
+    public List<PhongBan> getPhongBanById(String maPhongBan) {
+        return phongBanMapper.getPhongBanById(maPhongBan);
+    }
+
+    @Override
+    public List<PhongBan> getPhongBanByName(String tenPhongBan) {
+        return phongBanMapper.getPhongBanByName(tenPhongBan);
+    }
+
+    @Override
+    public int savePhongBan(PhongBan newPhongBan) {
+        String maPhongBan = newPhongBan.getMaPhongBan();
+        if (phongBanMapper.isPhongBanExist(maPhongBan)){
+            try{
+                return phongBanMapper.update(newPhongBan);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        } else {
+            try{
+                return phongBanMapper.insert(newPhongBan);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
+        return 0;
+    }
+
+    @Override
+    public int deletePhongBan(String maPhongBan) {
+        if (phongBanMapper.isPhongBanExist(maPhongBan)){
+            try{
+               return phongBanMapper.delete(maPhongBan);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return 0;
     }
 }
