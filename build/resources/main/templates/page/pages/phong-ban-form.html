@@ -7,16 +7,11 @@
 
 <body>
 <div th:fragment="main">
-<!--    <script type="text/javascript">-->
-<!--        $(document).ready(function (){-->
-<!--            getAllUser();-->
-<!--        })-->
-<!--    </script>-->
     <script type="text/javascript" th:src="@{/page/pages/js/phong-ban-form.js}"></script>
     <!-- partial -->
     <div class="col-12">
         <div class="row">
-                <div class="col-lg-6">
+            <div class="col-lg-6">
                 <div class="mb-3">
                     <span class="form-label font-weight-bold">Phòng ban</span>
                 </div>
@@ -39,8 +34,9 @@
                 </div>
 
                 <div style="padding-top: 10px">
-                    <button id="btnAddPhongBan" class="btn btn-primary" type="button" onclick="addPhongBan()">Thêm phòng ban</button>
-                    <a th:href="@{/page/index}" class="btn btn-success btn-sm" style="height: 37px; line-height: 1; margin-bottom: 16px; align-content: center">Quay lại</a>
+                    <button id="btnAddPhongBan" class="btn btn-success" type="button" onclick="savePhongBan()">Lưu</button>
+                    <button id="btnDeletePhongBan" class="btn btn-danger" type="button" onclick="deletePhongBan()">Xóa</button>
+                    <a th:href="@{/page/index}" class="btn btn-info btn-sm" style="height: 37px; line-height: 1; margin-bottom: 16px; align-content: center">Quay lại</a>
                 </div>
             </div>
 

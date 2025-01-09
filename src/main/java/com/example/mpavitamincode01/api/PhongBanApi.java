@@ -50,4 +50,19 @@ public class PhongBanApi {
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/delete-phong-ban")
+    public ResponseEntity doSavePhongBan(@RequestParam("maPhongBan") String maPhongBan){
+        HashMap<String, Object> result = new HashMap<>();
+        try{
+            result.put("status", true);
+            result.put("message", "Call Api Success");
+            phongBanService.deletePhongBan(maPhongBan);
+        } catch (Exception e){
+            result.put("status", false);
+            result.put("message", "Call Api Failure");
+            log.error("Failure when call API {api/v1/phong-ban/delete-phong-ban} : ", e);
+        };
+        return ResponseEntity.ok(result);
+    }
+
 }

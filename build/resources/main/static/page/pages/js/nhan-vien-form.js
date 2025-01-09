@@ -28,7 +28,7 @@ function createTable(listUser, listPhongBan){
         // let {data: result} = await axios.get("/api/v1/phong-ban/get-all-phong-ban");
 
         for(let i = 0 ; i < listPhongBan.length ; i++ ){
-            selectString += `<option value="${listPhongBan[i].maPhongBan}">${listPhongBan[i].tenPhongBan}</option>`;
+            selectString += `<option value="${listPhongBan[i].maPhongBan}">${listPhongBan[i].maPhongBan} - ${listPhongBan[i].tenPhongBan}</option>`;
         }
 
         selectString += `</select>`;

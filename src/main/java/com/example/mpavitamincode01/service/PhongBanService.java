@@ -7,5 +7,9 @@ import java.util.List;
 
 public interface PhongBanService {
     List<PhongBan> getAllPhongBan();
-    void savePhongBan(PhongBan newPhongBan);
+    List<PhongBan> getPhongBanById(String maPhongBan);
+    List<PhongBan> getPhongBanByName(String tenPhongBan);
+
+    int savePhongBan(PhongBan newPhongBan);
+    int deletePhongBan(String maPhongBan);
 }

@@ -1,12 +1,16 @@
-// async function addPhongBan() {
-//     let listPhongBan = {
-//         'maPhongBan': document.getElementById("txtMaPhongBan").value,
-//         'tenPhongBan': document.getElementById("txtTenPhongBan").value,
-//         'maTP': document.getElementById("txtMaTP").value
-//     };
-//     console.log(listPhongBan);
-//     await insertPhongBan(listPhongBan);
-// }
+async function savePhongBan() {
+    let phongBan = {
+        'maPhongBan': document.getElementById("txtMaPhongBan").value,
+        'tenPhongBan': document.getElementById("txtTenPhongBan").value,
+        'maTP': document.getElementById("cbxNhanVienSelect").value
+    };
+    await insert(phongBan);
+}
+
+async function deletePhongBan() {
+    let maPhongBan = document.getElementById("txtMaPhongBan").value;
+    await deletePhongBanById(maPhongBan);
+}
 
 function createTable(listUser, listPhongBan){
     try{
@@ -15,24 +19,25 @@ function createTable(listUser, listPhongBan){
         let tbodyPhongBan = document.getElementById("tbodyTablePhongBan");
         tbodyPhongBan.innerHTML = "";
         let tbodyString = "";
-        for(let i = 0 ; i < listPhongBan.length ; i++){
-            tbodyString += `<tr>`+
-                `<td>${listPhongBan[i].maPhongBan}</td>`+
-                `<td>${listPhongBan[i].tenPhongBan}</td>`+
-                `<td>${listPhongBan[i].maTP}</td>`+
-                `</tr>`;
-        }
+            for(let i = 0 ; i < listPhongBan.length ; i++){
+                tbodyString += `<tr>`+
+                    `<td>${listPhongBan[i].maPhongBan}</td>`+
+                    `<td>${listPhongBan[i].tenPhongBan}</td>`+
+                    `<td>${listPhongBan[i].maTP}</td>`+
+                    `</tr>`;
+            }
         tbodyPhongBan.innerHTML += tbodyString;
 
         //Combo box Nhan Vien
+        let tSelect = document.getElementById("cbxNhanVienSelect");
+        tSelect.innerHTML = "";
         let selectString = '';
-
         for(let i = 0 ; i < listUser.length ; i++ ){
-            selectString += `<option value="${listUser[i].maNhanVien}">${listUser[i].tenNhanVien}</option>`;
+            selectString += `<option value="${listUser[i].maNhanVien}">${listUser[i].maNhanVien} - ${listUser[i].tenNhanVien}</option>`;
         }
 
         selectString += `</select>`;
-        let tSelect = document.getElementById("cbxNhanVienSelect");
+
         tSelect.innerHTML += selectString;
     } catch (e) {
         console.log(e)
@@ -41,7 +46,7 @@ function createTable(listUser, listPhongBan){
 
 async function getAllData(){
     // Gọi cả hai API
-    const [userResponse, phongBanResponse] = await Promise.all([
+       const [userResponse, phongBanResponse] = await Promise.all([
         axios.get("/api/v1/user/get-all-user"),
         axios.get("/api/v1/phong-ban/get-all-phong-ban"),
     ]);
@@ -52,12 +57,18 @@ async function getAllData(){
 
     if(userResult.status && phongBanResult.status){
         createTable(userResult.data, phongBanResult.data);
-
     }
 }
 
-insertPhongBan = async (phongBan) => {
+insert = async (phongBan) => {
     let result = await axios.post("/api/v1/phong-ban/save-phong-ban", phongBan);
+    if(result.status){
+        getAllData();
+    }
+};
+
+deletePhongBanById = async (maPhongBan) => {
+    let result = await axios.delete("/api/v1/phong-ban/delete-phong-ban?maPhongBan="+maPhongBan);
     if(result.status){
         getAllData();
     }
@@ -82,7 +93,8 @@ function fillPhongBanFormWithRowData(event) {
     // Điền dữ liệu vào form
     document.getElementById("txtMaPhongBan").value = rowData.maPhongBan || "";
     document.getElementById("txtTenPhongBan").value = rowData.tenPhongBan || "";
-    document.getElementById("txtMaTP").value = rowData.maTP || "";
+    document.getElementById("cbxNhanVienSelect").value = rowData.maTP || "";
+
 
 }
 
