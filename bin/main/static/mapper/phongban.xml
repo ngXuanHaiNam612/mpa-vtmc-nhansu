@@ -20,11 +20,18 @@
         FROM VTMC_NHANSU_PHONGBAN
     </select>
 
-    <select id="getPhongBan" resultMap="phongBanResultMap">
+    <select id="getPhongBanById" resultMap="phongBanResultMap">
         SELECT
         <include refid="columnPhongBan"/>
         FROM VTMC_NHANSU_PHONGBAN
         WHERE ma_phong_ban = #{maPhongBan}
+    </select>
+
+    <select id="getPhongBanByName" resultMap="phongBanResultMap">
+        SELECT
+        <include refid="columnPhongBan"/>
+        FROM VTMC_NHANSU_PHONGBAN
+        WHERE mten_phong_ban = #{tenPhongBan}
     </select>
 
     <insert id="insert">
@@ -41,12 +48,22 @@
 
     <update id="update">
         UPDATE VTMC_NHANSU_PHONGBAN
-        SET ten_phong_ban = #{tenPhongBan}
+        SET ten_phong_ban =#{tenPhongBan}
           , ma_truong_phong = #{maTP}
-        WHERE ma_phong_ban = ?
+        WHERE ma_phong_ban = #{maPhongBan}
     </update>
 
     <delete id="delete">
-
+        DELETE FROM VTMC_NHANSU_PHONGBAN
+        WHERE ma_phong_ban = #{maPhongBan}
     </delete>
+
+    <select id="isPhongBanExist" parameterType="String" resultType="boolean">
+        SELECT
+            EXISTS(
+                SELECT 1
+                FROM VTMC_NHANSU_PHONGBAN
+                WHERE ma_phong_ban = #{maPhongBan}
+            )
+    </select>
 </mapper>
